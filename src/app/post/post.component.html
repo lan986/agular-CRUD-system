@@ -1,0 +1,114 @@
+<p>post works!</p>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Crud</title>
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  />
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"
+  ></script>
+</head>
+
+<body>
+  <hr />
+  <div class="table-content">
+    <div class="container">
+      <div class="table-responsive">
+        <div class="table-wrapper">
+          <div class="table-title">
+            <div class="row">
+              <div class="col-sm-6">
+                <h2>posts <b>Details</b></h2>
+              </div>
+              <div class="col-sm-6">
+                <button class="btn btn-success" (click)="createPosts()">
+                  add
+                </button>
+              </div>
+            </div>
+            <table class="table table-striped table-hover table-bordered">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>text <i class="fa fa-sort"></i></th>
+
+                  <th>image <i class="fa fa-sort"></i></th>
+
+                  <th>tags</th>
+                  <th>likes</th>
+                  <th>owner</th>
+                  <th>date</th>
+
+                  <th>update</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let post of posts.data">
+                  <td>{{ post.id }}</td>
+                  <td>{{ post.text }}</td>
+                  <td>{{ post.image }}</td>
+                  <td>{{ post.tags }}</td>
+                  <td>{{ post.likes }}</td>
+
+                  <td>{{ post.owner }}</td>
+                  <td>{{ post.publishDate }}</td>
+                  <td>
+                    <a class="edit"
+                      ><i
+                        class="material-icons"
+                        (click)="updatePosts(post.id, post)"
+                        title="Edit"
+                        >&#xE254;</i
+                      ></a
+                    >
+                  </td>
+                  <td>
+                    <a class="delete"
+                      ><i
+                        class="material-icons"
+                        (click)="deletePosts(post.id)"
+                        title="Delete"
+                        >&#xE872;</i
+                      ></a
+                    >
+                  </td>
+                </tr>
+                ;
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!--    <p *ngFor="let u of usersid.data">{{u.firstName}}</p >-->
+    </div>
+  </div>
+</body>

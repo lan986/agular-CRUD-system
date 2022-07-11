@@ -1,0 +1,39 @@
+<p>form works!</p>
+
+<form #hero="ngForm" (ngSubmit)="onsubmitfunc()"> <!--hero is reference for ngform  which id control form as whole -->
+    <div class="form-group mb-3">
+        <label for="name">NAME</label>
+        <input type="text" id="name" name="text "  class="form-control"required [(ngModel)]="model.name"
+        #nameinput="ngModel">
+        <div class= "alert alert-danger" *ngIf="!nameinput.valid && nameinput.touched">name is required
+        </div>
+    </div>
+    
+    <div class="form-group mb-3">
+        <label for="alter">alter</label>
+        <input type="text" id="alter" name="alter "  class="form-control" [(ngModel)]="model.alterego">
+    </div>
+    <div class="form-group mb-3">
+        <label for="powers">powers</label>
+        <select name="powers" id="powers" class="form-control" required [(ngModel)]="model.power"
+        #powerinput="ngModel">
+        <option *ngFor="let powe of power" [value]="powe">{{powe}}</option>
+        </select>
+        <div class= "alert alert-danger" *ngIf="!powerinput.valid && powerinput.touched">power is required ></div>
+            
+     
+    </div>
+       
+    <div class="form-group mb-3">
+     
+        <button type="submit"  class="btn btn-success my-2" name="submit " 
+        [disabled]="!hero.valid" >submit</button>
+   
+        <button type="button"  class="btn btn-success mx-5"  (click) = "hero.reset()"  >reset</button>
+    </div>
+</form>
+<div>
+    the data from form is :
+    <p>{{model|json}}</p>
+   
+</div>
